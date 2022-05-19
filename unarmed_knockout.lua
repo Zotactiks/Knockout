@@ -4,20 +4,19 @@ local wait = 15
 local count = 60
 local isdead = false
 
-Citizen.CreateThread(
-    function()
+CreateThread(function()
         while true do
             Wait(1)
-            local myPed = GetPlayerPed(-1)
+            local ped = PlayerPedid()
             PlayerData = QBCore.Functions.GetPlayerData()
-            if IsPedInMeleeCombat(myPed) then
+            if IsPedInMeleeCombat(ped) then
                 --  {UNARMED ONLY}
-                if (HasPedBeenDamagedByWeapon(myPed, GetHashKey("WEAPON_UNARMED"), 0)) then
+                if (HasPedBeenDamagedByWeapon(ped, GetHashKey("WEAPON_UNARMED"), 0)) then
                     -- Health to be knocked out
-                    if GetEntityHealth(myPed) < 145 then
-                        SetPlayerInvincible(PlayerId(), false)
+                    if GetEntityHealth(ped) < 145 then
+                        SetPlayerInvincible(ped, false)
                         -- Position taken by your Ped
-                        SetPedToRagdoll(myPed, 1000, 1000, 0, 0, 0, 0)
+                        SetPedToRagdoll(ped, 1000, 1000, 0, 0, 0, 0)
                         -- Time to wait
                         wait = 60
                         QBCore.Functions.Progressbar("knocked-out", "unconscious...", 45000, false, false, {
@@ -39,7 +38,7 @@ Citizen.CreateThread(
                         )
                         knockedOut = true
                         -- Health after knockout preferably dont make it more than 150 (50 %) because people will abuse with it {No need to go to hospital or so}
-                        SetEntityHealth(myPed, 140)
+                        SetEntityHealth(ped, 140)
                     end
                 end
             end
@@ -47,8 +46,8 @@ Citizen.CreateThread(
                 --Your ped is able to die
                 SetPlayerInvincible(PlayerId(), false)
                 DisablePlayerFiring(PlayerId(), true)
-                SetPedToRagdoll(myPed, 1000, 1000, 0, 0, 0, 0)
-                ResetPedRagdollTimer(myPed)
+                SetPedToRagdoll(ped, 1000, 1000, 0, 0, 0, 0)
+                ResetPedRagdollTimer(ped)
                 -- Blur Cam
                 SetTimecycleModifier("hud_def_blur")
                 if wait >= 0 then
@@ -57,9 +56,9 @@ Citizen.CreateThread(
                         count = 60
                         wait = wait - 1
                         --- in case bark
-                        if GetEntityHealth(myPed) <= 50 then
+                        if GetEntityHealth(ped) <= 50 then
                             -- Ped healing
-                            SetEntityHealth(myPed, GetEntityHealth(myPed) + 2)
+                            SetEntityHealth(ped, GetEntityHealth(ped) + 2)
                         end
                     end
                 else
