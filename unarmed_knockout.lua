@@ -73,7 +73,7 @@ Citizen.CreateThread(
             end
             -- Simple clear Knockout if Dead
             if PlayerData.metadata['isdead']then
-                 -- Remove red cam
+                 -- Remove Konockout effect
                  SetTimecycleModifier("")
                  SetTransitionTimecycleModifier("")
                  knockedOut = false
