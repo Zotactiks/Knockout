@@ -7,7 +7,7 @@ local isdead = false
 CreateThread(function()
         while true do
             Wait(1)
-            local ped = PlayerPedid()
+            local ped = PlayerPedId()
             PlayerData = QBCore.Functions.GetPlayerData()
             if IsPedInMeleeCombat(ped) then
                 --  {UNARMED ONLY}
@@ -44,8 +44,8 @@ CreateThread(function()
             end
             if knockedOut == true then
                 --Your ped is able to die
-                SetPlayerInvincible(PlayerId(), false)
-                DisablePlayerFiring(PlayerId(), true)
+                SetPlayerInvincible(ped(), false)
+                DisablePlayerFiring(ped(), true)
                 SetPedToRagdoll(ped, 1000, 1000, 0, 0, 0, 0)
                 ResetPedRagdollTimer(ped)
                 -- Blur Cam
@@ -66,7 +66,7 @@ CreateThread(function()
                     SetTimecycleModifier("")
                     SetTransitionTimecycleModifier("")
                     -- Ped Able to die again
-                    SetPlayerInvincible(PlayerId(), false)
+                    SetPlayerInvincible(ped(), false)
                     knockedOut = false
                 end
             end
