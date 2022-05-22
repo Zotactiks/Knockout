@@ -8,8 +8,7 @@ CreateThread(function()
         while true do
             Wait(1)
             local ped = PlayerPedId()
-            local PlayerData = QBCore.Functions.GetPlayerData()
-            local isDead = PlayerData.metadata['isdead']            
+            PlayerData = QBCore.Functions.GetPlayerData()
             if IsPedInMeleeCombat(ped) then
                 --  {UNARMED ONLY}
                 if (HasPedBeenDamagedByWeapon(ped, GetHashKey("WEAPON_UNARMED"), 0)) then
@@ -83,7 +82,7 @@ CreateThread(function()
                 end
             end
             -- Simple clear Knockout if Dead
-            if isDead then
+            if QBCore.PlayerData.metadata['isdead'] then
                  -- Remove Konockout effect
                  SetTimecycleModifier("")
                  SetTransitionTimecycleModifier("")
