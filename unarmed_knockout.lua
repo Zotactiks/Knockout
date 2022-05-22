@@ -34,9 +34,20 @@ CreateThread(function()
                             end,
                             function()
                             end,
-                            "fa-solid fa-face-dizzy"
-                        )
-                        knockedOut = true
+                            "fa-solid fa-face-dizzy")
+              --    QBCore.Functions.Progressbar("knocked-out", "unconscious...", 45000, math.random(18000, 30000), false, false, {
+              --    disableMovement = true,
+              --    disableCarMovement = true,
+              --    disableMouse = false,
+              --    disableCombat = true,
+              --    }, {}, {}, {},                             
+              --    function()
+              --    Done
+              --    QBCore.Functions.Notify("Finally you're awake!", "success", 5000)
+              --    end,
+              --    function()
+              --    end)                        
+                      knockedOut = true
                         -- Health after knockout preferably dont make it more than 150 (50 %) because people will abuse with it {No need to go to hospital or so}
                         SetEntityHealth(ped, 140)
                     end
