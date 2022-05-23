@@ -82,7 +82,7 @@ CreateThread(function()
                 end
             end
             -- Simple clear Knockout if Dead
-            if QBCore.PlayerData.metadata['isdead'] then
+            if PlayerData['isdead']then
                  -- Remove Konockout effect
                  SetTimecycleModifier("")
                  SetTransitionTimecycleModifier("")
