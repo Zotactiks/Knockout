@@ -5,4 +5,6 @@ If you wish to use Knockout Script without PS-progressbar you can use the standa
 
 
 
-#Credit to https://github.com/zharrane for the original source.
+ # Credit
+ 
+ https://github.com/zharrane for the original source.
